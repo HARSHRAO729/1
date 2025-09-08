@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+  <h3>Alumni Directory</h3>
+  <div><a class="btn btn-primary" href="{{ url_for('alumni_add') }}">+ Add Alumni</a></div>
+</div>
+<div class="card">
+  <table class="table">
+    <thead><tr><th>Name</th><th>Batch</th><th>Company</th><th>Contact</th><th></th></tr></thead>
+    <tbody>
+      {% for a in alumni %}
+      <tr>
+        <td><strong>{{ a['name'] }}</strong><div class="small">{{ a['bio'] }}</div></td>
+        <td>{{ a['batch'] }}</td>
+        <td>{{ a['company'] }}</td>
+        <td>{{ a['email'] }}<br>{{ a['phone'] }}</td>
+        <td style="white-space:nowrap">
+          <a class="btn btn-ghost" href="{{ url_for('alumni_edit', a_id=a['id']) }}">Edit</a>
+          <form method="post" action="{{ url_for('alumni_delete', a_id=a['id']) }}" style="display:inline" onsubmit="return confirm('Remove this alumni?')">
+            <button class="btn btn-primary" type="submit">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

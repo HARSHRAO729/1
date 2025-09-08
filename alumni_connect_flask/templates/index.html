@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card">
+  <h3>Welcome, {{ session.get('user') }}</h3>
+  <p class="small">Use the sidebar links to navigate. This local demo stores data in a SQLite DB (alumni.db).</p>
+  <div style="display:flex;gap:12px;margin-top:12px">
+    <a class="btn btn-primary" href="{{ url_for('alumni_list') }}">Manage Alumni</a>
+    <a class="btn btn-primary" href="{{ url_for('events_list') }}">Manage Events</a>
+    <a class="btn btn-primary" href="{{ url_for('mentorship_list') }}">Mentorship Requests</a>
+    <a class="btn btn-primary" href="{{ url_for('insights') }}">View Insights</a>
+  </div>
+</div>
+{% endblock %}

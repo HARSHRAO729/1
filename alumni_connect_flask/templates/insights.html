@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>Insights</h3>
+<div class="card">
+  <div class="small">Total alumni: <strong>{{ total }}</strong></div>
+  <div style="margin-top:10px"><strong>By batch</strong></div>
+  <ul>
+    {% for b in by_batch %}
+      <li>{{ b['batch'] }} — {{ b['cnt'] }}</li>
+    {% endfor %}
+  </ul>
+  <div style="margin-top:10px">
+    <form method="post" action="{{ url_for('import_json') }}" enctype="multipart/form-data">
+      <label>Import JSON (alumni/events/mentorships)</label>
+      <input type="file" name="file" />
+      <button class="btn btn-primary" type="submit">Import</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

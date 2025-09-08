@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+  <h3>Events</h3>
+  <div><a class="btn btn-primary" href="{{ url_for('event_add') }}">+ New Event</a></div>
+</div>
+<div class="card">
+  {% if events|length==0 %}<div class="small">No upcoming events.</div>{% endif %}
+  <table class="table">
+    <thead><tr><th>Title</th><th>Date</th><th>Venue</th><th></th></tr></thead>
+    <tbody>
+      {% for e in events %}
+      <tr>
+        <td><strong>{{ e['title'] }}</strong><div class="small">{{ e['description'] }}</div></td>
+        <td>{{ e['date'] }}</td>
+        <td>{{ e['venue'] }}</td>
+        <td>
+          <form method="post" action="{{ url_for('event_delete', eid=e['id']) }}" onsubmit="return confirm('Delete event?')"><button class="btn btn-primary" type="submit">Delete</button></form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

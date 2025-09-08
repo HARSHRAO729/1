@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card" style="max-width:520px;margin:20px auto">
+  <h3>Create user (admin only)</h3>
+  <form method="post">
+    <div style="margin-bottom:8px"><label>Username (email)</label><input name="username" /></div>
+    <div style="margin-bottom:8px"><label>Password</label><input type="password" name="password" /></div>
+    <div style="margin-bottom:8px"><label>Role</label><select name="role"><option value="admin">admin</option><option value="editor">editor</option></select></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn btn-primary" type="submit">Create</button></div>
+  </form>
+</div>
+{% endblock %}

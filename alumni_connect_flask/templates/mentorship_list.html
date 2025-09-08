@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+  <h3>Mentorship Requests</h3>
+  <div><a class="btn btn-primary" href="{{ url_for('mentorship_add') }}">+ New Request</a></div>
+</div>
+<div class="card">
+  {% if requests|length==0 %}<div class="small">No requests yet.</div>{% endif %}
+  <table class="table">
+    <thead><tr><th>Title</th><th>Student</th><th>Field</th><th></th></tr></thead>
+    <tbody>
+      {% for r in requests %}
+      <tr>
+        <td><strong>{{ r['title'] }}</strong><div class="small">{{ r['note'] }}</div></td>
+        <td>{{ r['student_name'] }}</td>
+        <td>{{ r['field'] }}</td>
+        <td><form method="post" action="{{ url_for('mentorship_delete', mid=r['id']) }}" onsubmit="return confirm('Remove request?')"><button class="btn btn-primary" type="submit">Remove</button></form></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

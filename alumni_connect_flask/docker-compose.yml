@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - EMAIL_HOST=mailhog
+      - EMAIL_PORT=1025
+      - SECRET_KEY=change_this_secret_for_production
+    depends_on:
+      - mailhog
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+  react:
+    build: ./react-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - web

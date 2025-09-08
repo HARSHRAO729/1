@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>New Mentorship Request</h3>
+<div class="card">
+  <form method="post">
+    <div style="margin-bottom:8px"><label>Title</label><input name="title"/></div>
+    <div style="margin-bottom:8px"><label>Student name</label><input name="student_name"/></div>
+    <div style="margin-bottom:8px"><label>Field / Skills</label><input name="field"/></div>
+    <div style="margin-bottom:8px"><label>Note</label><textarea name="note"></textarea></div>
+    <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" type="submit">Add</button></div>
+  </form>
+</div>
+{% endblock %}

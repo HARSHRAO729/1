@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card" style="max-width:520px;margin:20px auto">
+  <h3>Admin login</h3>
+  <form method="post">
+    <div style="margin-bottom:8px"><label>Username</label><input name="username" /></div>
+    <div style="margin-bottom:8px"><label>Password</label><input type="password" name="password" /></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn btn-primary" type="submit">Login</button></div>
+  </form>
+  <div class="small" style="margin-top:10px">Default admin: <strong>admin</strong> / <strong>adminpass</strong></div>
+</div>
+{% endblock %}
