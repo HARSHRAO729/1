@@ -211,6 +211,6 @@ def approve_mentor(app_id):
 def reject_mentor(app_id):
     conn=get_db(); cur=conn.cursor(); cur.execute("UPDATE mentor_applications SET status='rejected' WHERE id=?", (app_id,)); conn.commit(); conn.close(); flash('Rejected','info'); return redirect(url_for('admin_mentor_applications'))
 
-if __name__=='__main__':
-    init_db()
-    app.run(debug=False, host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
